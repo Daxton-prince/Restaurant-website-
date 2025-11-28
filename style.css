@@ -25,7 +25,7 @@
         }
 
         h2 {
-            font-size: 2.5rem;
+            font-size: 1.7rem;
             margin-bottom: 1.5rem;
             position: relative;
             
@@ -39,6 +39,7 @@
             left: 0;
             width: 60px;
             height: 3px;
+            z-index: 2;
              transform: translateY(-10px);
             background-color: #d4af37;
         }
@@ -292,9 +293,18 @@ h2:hover{
         .menu-item {
         background-color: #2a2a2a;
             padding: 2rem;
+            height: 40vh;
             box-shadow:0 10px 15px  #4403f7;
             border-radius: 10px;
             transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .menu-item-image{
+             width: 70px;
+    height: 100px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform .2s;
+            
         }
 
         .menu-item:hover {
@@ -316,12 +326,78 @@ h2:hover{
         .menu-item-price {
             color: #e0f804;
             font-weight: 700;
+            margin-top: 0px;
         }
 
         .menu-item-description {
             color: #fdf8f8;
             font-size: 1rem;
+            width:50%;
+            margin-left: 50%;
+            position: relative;
+            bottom: 50%;
+            
         }
+         
+
+.menu-item-image:hover {
+    transform: scale(1.05);
+}
+.image-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.menu-item-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform .2s ease;
+}
+
+.menu-item-image.expanded {
+    position: relative;
+    z-index: 10;
+    width: 300px;
+    height: 300px;
+    transform: translateX(-50%, -50%) scale(1);
+    top: 70%;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,.6);
+}
+
+.image-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0);
+    z-index: 5;
+}
+.image-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 100;
+}
+
+.zoomed-image {
+    position: fixed;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    z-index: 200;
+    transition: all 0.25s ease;
+}
+
+.zoomed-image.active {
+    width: 350px;
+    height: 350px;
+    top: 70% !important;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+}
+
 
         /* Gallery Section */
         .gallery {
@@ -690,6 +766,11 @@ h2:hover{
             }
             h2{
                 text-align: center;
+                
+            }
+            .zoomed-image.active{
+                 left: 40% !important;
+
             }
         }
 
@@ -697,9 +778,12 @@ h2:hover{
             h1 {
                 font-size: 2.5rem;
             }
+          .zoomed-image.active{
+                 left: 40% !important;
 
+            }
             h2 {
-                font-size: 2rem;
+                font-size: 1.4rem;
             }
 
             .hero-content h1 {
